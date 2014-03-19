@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.ParameterExpression;
 import javax.persistence.criteria.Root;
 
-import com.spike.customer.Customer;
+import com.spike.customer.domain.Customer;
 import com.spike.customer.dto.CustomerDTO;
 import com.spike.customer.dto.CustomerTransformer;
 
@@ -31,7 +31,7 @@ public class CustomerDao {
 		return CustomerTransformer.INSTANCE.toDTO(q.getResultList());
 	}
 
-	public List<CustomerDTO> list(long id) {
+	public CustomerDTO list(long id) {
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Customer> cq = cb.createQuery(Customer.class);
 		Root<Customer> customer = cq.from(Customer.class);
@@ -42,7 +42,7 @@ public class CustomerDao {
 
 		TypedQuery<Customer> q = entityManager.createQuery(cq);
 		q.setParameter(p, id);
-		return CustomerTransformer.INSTANCE.toDTO(q.getResultList());
+		return CustomerTransformer.INSTANCE.toDTO(q.getSingleResult());
 	}
 
 	public CustomerDTO create(Customer c) {

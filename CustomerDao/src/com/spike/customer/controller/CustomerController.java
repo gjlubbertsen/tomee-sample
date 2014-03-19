@@ -11,50 +11,50 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
-import com.spike.customer.dao.CustomerDao;
 import com.spike.customer.dto.CustomerDTO;
-import com.spike.customer.dto.CustomerTransformer;
+import com.spike.customer.service.CustomerService;
 
-@Path("/api/Customer")
-@Produces({"text/xml", "application/json"})
+@Path("/api")
+@Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 public class CustomerController {
 	
     @Inject
-    private CustomerDao CustomerDao;
+    private CustomerService customerService;
     
-    @Path("/create")
-    @PUT
+    @Path("/customers")
+    @POST
     public CustomerDTO create(CustomerDTO dto) {
-        return CustomerDao.create(CustomerTransformer.INSTANCE.toBO(dto));
+        return customerService.create(dto);
     }
 
-    @Path("/list/{postId}")
+    @Path("/customers/{postId}")
     @GET
-    public List<CustomerDTO> list(@PathParam("postId") long customerId) {
-        return CustomerDao.list(customerId);
+    public CustomerDTO list(@PathParam("postId") long customerId) {
+        return customerService.list(customerId);
     }
     
-    @Path("/list/")
+    @Path("/customers")
     @GET
     public List<CustomerDTO> list() {
-        return CustomerDao.listAll();
+        return customerService.getCustomers();
     }
     
     // set SSN to Person
 
-    @Path("/delete/{id}")
+    @Path("/customers/{id}")
     @DELETE
     public void delete(@PathParam("id") long id) {
-        CustomerDao.delete(id);
+        customerService.delete(id);
     }
 
-    @Path("/update/{id}")
-    @POST
+    @Path("/customers/{id}")
+    @PUT
     public CustomerDTO update(@PathParam("id") long id,
                           @QueryParam("name") String name,
                           @QueryParam("lastname") String lastname,
                           @QueryParam("year") int year) {
-        return CustomerDao.update(id, name, lastname, year);
+        return customerService.update(id, name, lastname, year);
     }
 }

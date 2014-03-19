@@ -1,4 +1,4 @@
-package com.spike.customer;
+package com.spike.customer.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

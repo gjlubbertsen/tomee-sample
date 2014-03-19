@@ -3,7 +3,7 @@ package com.spike.customer.dto;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.spike.customer.Customer;
+import com.spike.customer.domain.Customer;
 
 public enum CustomerTransformer {
 	INSTANCE;
