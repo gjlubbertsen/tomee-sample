@@ -6,9 +6,9 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import com.spike.customer.dao.CustomerDao;
 import com.spike.customer.dto.CustomerDTO;
 import com.spike.customer.dto.CustomerTransformer;
+import com.spike.customer.repo.CustomerRepo;
 import com.spike.customer.service.CustomerService;
 
 @Singleton
@@ -16,7 +16,7 @@ import com.spike.customer.service.CustomerService;
 public class CustomerServiceImpl implements CustomerService {
 
 	@Inject
-	private CustomerDao customerDao;
+	private CustomerRepo customerDao;
 	
 	@Override
     public CustomerDTO create(CustomerDTO dto) {

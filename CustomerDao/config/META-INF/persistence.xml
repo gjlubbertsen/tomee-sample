@@ -3,6 +3,7 @@
     <jta-data-source>mysqlDataSource</jta-data-source>
     <non-jta-data-source>mysqlDataSourceUnmanaged</non-jta-data-source>
     <class>com.spike.customer.domain.Customer</class>
+    <class>com.spike.customer.domain.Order</class>
     <properties>
       <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported"/>
       <property name="openjpa.jdbc.DBDictionary"  value="org.apache.openjpa.jdbc.sql.MySQLDictionary"/> 

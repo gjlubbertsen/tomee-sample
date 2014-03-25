@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.spike.customer.dao.CustomerDao;
 import com.spike.customer.dto.CustomerDTO;
+import com.spike.customer.repo.CustomerRepo;
 
 /**
  * Very simplistic servlet that generates plain text. Uses the @WebServlet
@@ -27,7 +27,7 @@ import com.spike.customer.dto.CustomerDTO;
 public class HelloCustomer extends HttpServlet {
 
 	@Inject
-	private CustomerDao doa;
+	private CustomerRepo doa;
 
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
