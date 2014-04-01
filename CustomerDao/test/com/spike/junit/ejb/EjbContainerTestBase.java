@@ -1,4 +1,4 @@
-package com.spike.customer.service;
+package com.spike.junit.ejb;
 
 import java.util.Properties;
 
