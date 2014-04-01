@@ -2,45 +2,53 @@ package com.spike.customer.service.impl;
 
 import java.util.List;
 
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
-import javax.inject.Named;
-import javax.inject.Singleton;
 
 import com.spike.customer.dto.CustomerDTO;
 import com.spike.customer.dto.CustomerTransformer;
 import com.spike.customer.repo.CustomerRepo;
 import com.spike.customer.service.CustomerService;
 
-@Singleton
-@Named
+@Default
 public class CustomerServiceImpl implements CustomerService {
 
 	@Inject
-	private CustomerRepo customerDao;
+	private CustomerRepo repo;
 	
 	@Override
     public CustomerDTO create(CustomerDTO dto) {
-		return customerDao.create(CustomerTransformer.INSTANCE.toBO(dto));
+		return repo.create(CustomerTransformer.INSTANCE.toBO(dto));
     }
 
 	@Override
     public CustomerDTO list(long customerId) {
-		return customerDao.list(customerId);
+		return repo.list(customerId);
     }
 
 	@Override
     public List<CustomerDTO> getCustomers() {
-		return customerDao.listAll();
+		return repo.listAll();
     }
 
 	@Override
     public void delete(long id) {
-		customerDao.delete(id);
+		repo.delete(id);
     }
 
 	@Override
     public CustomerDTO update(long id, String name, String lastname, int year) {
-		 return customerDao.update(id, name, lastname, year);
+		 return repo.update(id, name, lastname, year);
     }
+
+	@Override
+	public int listSSN(long customerId) {
+		return 0;
+	}
+
+	@Override
+	public int setSSN(long id, long ssn) {
+		return 0;
+	}
 
 }

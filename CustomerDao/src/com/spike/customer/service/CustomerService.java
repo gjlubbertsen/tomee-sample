@@ -9,6 +9,8 @@ public interface CustomerService {
 	CustomerDTO create(CustomerDTO dto);
 	CustomerDTO list(long customerId);
 	List<CustomerDTO> getCustomers();
+	int listSSN(long customerId);
 	void delete(long id);
 	CustomerDTO update(long id, String name, String lastname, int year);
+	int setSSN(long id, long ssn);
 }

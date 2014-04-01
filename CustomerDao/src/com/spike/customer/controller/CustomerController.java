@@ -41,6 +41,18 @@ public class CustomerController {
         return customerService.getCustomers();
     }
     
+    @Path("/customers/{id}/SSN")
+    @GET
+    public int getSSN(@PathParam("id") long id) {
+        return customerService.listSSN(id);
+    }
+    
+    
+    @Path("/customers/{id}/SSN")
+    @PUT
+    public int setSSN(@PathParam("id") long id, long ssn) {
+        return customerService.setSSN(id, ssn);
+    }
     // set SSN to Person
 
     @Path("/customers/{id}")

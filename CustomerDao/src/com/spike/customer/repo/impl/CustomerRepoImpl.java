@@ -3,6 +3,7 @@ package com.spike.customer.repo.impl;
 import java.util.List;
 
 import javax.ejb.Stateful;
+import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
@@ -18,6 +19,7 @@ import com.spike.customer.dto.CustomerTransformer;
 import com.spike.customer.repo.CustomerRepo;
 
 @Stateful
+@Default
 public class CustomerRepoImpl implements CustomerRepo {
 
 	@PersistenceContext(unitName = "customer-unit", type = PersistenceContextType.EXTENDED)
