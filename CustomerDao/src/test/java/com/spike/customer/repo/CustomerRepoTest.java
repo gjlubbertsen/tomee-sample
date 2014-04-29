@@ -3,21 +3,34 @@ package com.spike.customer.repo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.asset.EmptyAsset;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import com.spike.customer.domain.Customer;
-import com.spike.junit.ejb.EjbContainerTestBase;
+import com.spike.customer.repo.impl.CustomerRepoImpl;
 
-@ManagedBean
-public class CustomerRepoTest extends EjbContainerTestBase {
+@RunWith(Arquillian.class)
+public class CustomerRepoTest {
 
 	@Inject
 	private CustomerRepo repo;
 
+	@Deployment
+	public static JavaArchive createDeployment() {
+		return ShrinkWrap.create(JavaArchive.class)
+				.addClass(CustomerRepoImpl.class)
+				.addAsResource("META-INF/test-persistence.xml", "META-INF/persistence.xml")
+				.addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
+	}
+	
 	@Before
 	public void setup() {
 		clearAllCustomers();

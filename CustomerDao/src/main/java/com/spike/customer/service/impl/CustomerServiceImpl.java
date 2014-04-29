@@ -70,6 +70,7 @@ public class CustomerServiceImpl implements CustomerService {
 			throw new SSNNotSetException();
 		}
 		c.setSocialSecurityNr(ssn);
+		repo.update(c);
 	}
 
 }

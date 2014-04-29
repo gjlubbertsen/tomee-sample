@@ -1,0 +1,12 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
+  <persistence-unit name="customer-unit">
+    <jta-data-source>jdbc/arquillian</jta-data-source>
+    <non-jta-data-source>jdbc/arquillian</non-jta-data-source>
+    <class>com.spike.customer.domain.Customer</class>
+    <properties>
+      <property name="openjpa.jdbc.DBDictionary" value="hsql(SimulateLocking=true)"/>
+      <property name="openjpa.RuntimeUnenhancedClasses" value="unsupported"/>
+      <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+    </properties>
+  </persistence-unit>
+</persistence>

@@ -77,4 +77,10 @@ public class CustomerRepoImpl implements CustomerRepo {
 		entityManager.merge(c);
 		return c;
 	}
+
+	@Override
+	public Customer update(Customer c) {
+		entityManager.merge(c);
+		return c;
+	}
 }

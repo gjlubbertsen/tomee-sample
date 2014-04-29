@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<arquillian xmlns="http://jboss.com/arquillian"  
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+   xmlns:gfembed="urn:arq:org.jboss.arquillian.container.glassfish.embedded_3">  
+ 
+	<container qualifier="tomee" default="true">
+	    <configuration>
+	        <property name="httpPort">-1</property>
+	        <property name="stopPort">-1</property>
+	    </configuration>
+	</container>
+ 
+	 <Resource id="jdbc/arquillian" type="DataSource">
+	  JdbcDriver        org.hsqldb.jdbcDriver
+	  JdbcUrl           jdbc:hsqldb:mem:customerDB
+	  JtaManaged        false
+	  UserName          sa
+  	  Password          
+	</Resource>
+
+ </arquillian>  

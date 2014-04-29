@@ -10,4 +10,5 @@ public interface CustomerRepo {
 	Customer create(Customer c);
 	void delete(long id);
 	Customer update(long id, String name, String lastname, int year);
+	Customer update(Customer c);
 }
